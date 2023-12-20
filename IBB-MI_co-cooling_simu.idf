@@ -1,0 +1,3755 @@
+!-Generator IDFEditor 1.51
+!-Option SortedOrder UseSpecialFormat
+
+!-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
+!-      Use '!' comments if they need to be retained when using the IDFEditor.
+
+
+!-   ===========  ALL OBJECTS IN CLASS: VERSION ===========
+
+Version,22.1;
+
+!-   ===========  ALL OBJECTS IN CLASS: SIMULATIONCONTROL ===========
+
+
+SimulationControl,
+    No,                      !- Do Zone Sizing Calculation
+    No,                      !- Do System Sizing Calculation
+    No,                      !- Do Plant Sizing Calculation
+    No,                      !- Run Simulation for Sizing Periods
+    Yes,                     !- Run Simulation for Weather File Run Periods
+    No,                      !- Do HVAC Sizing Simulation for Sizing Periods
+    1;                       !- Maximum Number of HVAC Sizing Simulation Passes
+
+
+!-   ===========  ALL OBJECTS IN CLASS: BUILDING ===========
+
+Building,
+    IBB,                     !- Name
+    -15,                     !- North Axis {deg}
+    Suburbs,                 !- Terrain
+    0.01,                    !- Loads Convergence Tolerance Value {W}
+    0.01,                    !- Temperature Convergence Tolerance Value {deltaC}
+    FullInteriorAndExterior, !- Solar Distribution
+    150,                     !- Maximum Number of Warmup Days
+    6;                       !- Minimum Number of Warmup Days
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SURFACECONVECTIONALGORITHM:INSIDE ===========
+
+SurfaceConvectionAlgorithm:Inside,TARP;
+
+!-   ===========  ALL OBJECTS IN CLASS: SURFACECONVECTIONALGORITHM:OUTSIDE ===========
+
+SurfaceConvectionAlgorithm:Outside,TARP;
+
+!-   ===========  ALL OBJECTS IN CLASS: TIMESTEP ===========
+
+Timestep,6;
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:LOCATION ===========
+
+
+Site:Location,
+    Bourget_du_Lac,          !- Name
+    45.65,                   !- Latitude {deg}
+    5.88,                    !- Longitude {deg}
+    1.0,                     !- Time Zone {hr}
+    239;                     !- Elevation {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: RUNPERIOD ===========
+
+RunPeriod,
+    Annee,                   !- Name
+    MOIS_DEBUT,              !- Begin Month
+    JOUR_DEBUT,              !- Begin Day of Month
+    ,                        !- Begin Year
+    MOIS_FIN,                !- End Month
+    JOUR_FIN,                !- End Day of Month
+    ,                        !- End Year
+    ,                        !- Day of Week for Start Day
+    Yes,                     !- Use Weather File Holidays and Special Days
+    Yes,                     !- Use Weather File Daylight Saving Period
+    No,                      !- Apply Weekend Holiday Rule
+    Yes,                     !- Use Weather File Rain Indicators
+    Yes;                     !- Use Weather File Snow Indicators
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WEATHERPROPERTY:SKYTEMPERATURE ===========
+
+WeatherProperty:SkyTemperature,
+    Annee,                   !- Name
+    BerdahlMartin,           !- Calculation Type
+    ,                        !- Schedule Name
+    Yes;                     !- Use Weather File Horizontal IR
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDTEMPERATURE:BUILDINGSURFACE ===========
+
+Site:GroundTemperature:BuildingSurface,4.5,6.21,9.3,12.99,16.28,18.27,18.43,16.69,13.55,9.86,6.58,4.62;
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDREFLECTANCE ===========
+
+!
+!
+!
+! Site:GroundTemperature:BuildingSurface,4.5,6.21,9.3,12.99,16.28,18.27,18.43,16.69,13.55,9.86,6.58,4.62;
+Site:GroundReflectance,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4;
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULETYPELIMITS ===========
+
+
+ScheduleTypeLimits,
+    Any Number;              !- Name
+
+!
+! -------------------------------------------------------------
+! New objects created from ExpandObjects
+! -------------------------------------------------------------
+!
+ScheduleTypeLimits,
+    HVACTemplate Any Number; !- Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:DAY:INTERVAL ===========
+
+Schedule:Day:Interval,
+    RDC_Occupants_Sem,       !- Name
+    Any Number,              !- Schedule Type Limits Name
+    No,                      !- Interpolate to Timestep
+    8:00,                    !- Time 1 {hh:mm}
+    0,                       !- Value Until Time 1
+    9:00,                    !- Time 2 {hh:mm}
+    4,                       !- Value Until Time 2
+    13:00,                   !- Time 3 {hh:mm}
+    0,                       !- Value Until Time 3
+    14:00,                   !- Time 4 {hh:mm}
+    2,                       !- Value Until Time 4
+    17:00,                   !- Time 5 {hh:mm}
+    0,                       !- Value Until Time 5
+    22:00,                   !- Time 6 {hh:mm}
+    2,                       !- Value Until Time 6
+    24:00,                   !- Time 7 {hh:mm}
+    0;                       !- Value Until Time 7
+
+Schedule:Day:Interval,
+    RDC_Occupants_we,        !- Name
+    Any Number,              !- Schedule Type Limits Name
+    No,                      !- Interpolate to Timestep
+    8:00,                    !- Time 1 {hh:mm}
+    0,                       !- Value Until Time 1
+    9:00,                    !- Time 2 {hh:mm}
+    4,                       !- Value Until Time 2
+    13:00,                   !- Time 3 {hh:mm}
+    2,                       !- Value Until Time 3
+    14:00,                   !- Time 4 {hh:mm}
+    4,                       !- Value Until Time 4
+    17:00,                   !- Time 5 {hh:mm}
+    0,                       !- Value Until Time 5
+    22:00,                   !- Time 6 {hh:mm}
+    2,                       !- Value Until Time 6
+    24:00,                   !- Time 7 {hh:mm}
+    0;                       !- Value Until Time 7
+
+Schedule:Day:Interval,
+    RDC_People_we,           !- Name
+    Any Number,              !- Schedule Type Limits Name
+    No,                      !- Interpolate to Timestep
+    9:00,                    !- Time 1 {hh:mm}
+    0,                       !- Value Until Time 1
+    23:00,                   !- Time 2 {hh:mm}
+    120,                     !- Value Until Time 2
+    24:00,                   !- Time 3 {hh:mm}
+    0;                       !- Value Until Time 3
+
+Schedule:Day:Interval,
+    RDC_People_Sem,          !- Name
+    Any Number,              !- Schedule Type Limits Name
+    No,                      !- Interpolate to Timestep
+    8:00,                    !- Time 1 {hh:mm}
+    0,                       !- Value Until Time 1
+    9:00,                    !- Time 2 {hh:mm}
+    120,                     !- Value Until Time 2
+    13:00,                   !- Time 3 {hh:mm}
+    0,                       !- Value Until Time 3
+    14:00,                   !- Time 4 {hh:mm}
+    120,                     !- Value Until Time 4
+    17:00,                   !- Time 5 {hh:mm}
+    0,                       !- Value Until Time 5
+    22:00,                   !- Time 6 {hh:mm}
+    120,                     !- Value Until Time 6
+    24:00,                   !- Time 7 {hh:mm}
+    0;                       !- Value Until Time 7
+
+Schedule:Day:Interval,
+    Volets_RDC_sem,          !- Name
+    Any Number,              !- Schedule Type Limits Name
+    No,                      !- Interpolate to Timestep
+    8:00,                    !- Time 1 {hh:mm}
+    1,                       !- Value Until Time 1
+    9:00,                    !- Time 2 {hh:mm}
+    0,                       !- Value Until Time 2
+    13:00,                   !- Time 3 {hh:mm}
+    1,                       !- Value Until Time 3
+    14:00,                   !- Time 4 {hh:mm}
+    0,                       !- Value Until Time 4
+    17:00,                   !- Time 5 {hh:mm}
+    1,                       !- Value Until Time 5
+    22:00,                   !- Time 6 {hh:mm}
+    0,                       !- Value Until Time 6
+    24:00,                   !- Time 7 {hh:mm}
+    1;                       !- Value Until Time 7
+
+Schedule:Day:Interval,
+    Volets_RDC_we,           !- Name
+    Any Number,              !- Schedule Type Limits Name
+    No,                      !- Interpolate to Timestep
+    8:00,                    !- Time 1 {hh:mm}
+    1,                       !- Value Until Time 1
+    14:00,                   !- Time 2 {hh:mm}
+    0,                       !- Value Until Time 2
+    17:00,                   !- Time 3 {hh:mm}
+    1,                       !- Value Until Time 3
+    22:00,                   !- Time 4 {hh:mm}
+    0,                       !- Value Until Time 4
+    24:00,                   !- Time 5 {hh:mm}
+    1;                       !- Value Until Time 5
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:WEEK:COMPACT ===========
+
+Schedule:Week:Compact,
+    RDC_Occupants,           !- Name
+    Weekdays,                !- DayType List 1
+    RDC_Occupants_Sem,       !- Schedule:Day Name 1
+    Weekends,                !- DayType List 2
+    RDC_Occupants_we,        !- Schedule:Day Name 2
+    AllOtherDays,            !- DayType List 3
+    RDC_Occupants_we;        !- Schedule:Day Name 3
+
+Schedule:Week:Compact,
+    RDC_People,              !- Name
+    Weekdays,                !- DayType List 1
+    RDC_People_Sem,          !- Schedule:Day Name 1
+    Weekends,                !- DayType List 2
+    RDC_People_we,           !- Schedule:Day Name 2
+    AllOtherDays,            !- DayType List 3
+    RDC_People_we;           !- Schedule:Day Name 3
+
+Schedule:Week:Compact,
+    Volets_RDC,              !- Name
+    Weekdays,                !- DayType List 1
+    Volets_RDC_sem,          !- Schedule:Day Name 1
+    Weekends,                !- DayType List 2
+    Volets_RDC_we,           !- Schedule:Day Name 2
+    AllOtherDays,            !- DayType List 3
+    Volets_RDC_we;           !- Schedule:Day Name 3
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:YEAR ===========
+
+Schedule:Year,
+    RDC_Occupants,           !- Name
+    Any Number,              !- Schedule Type Limits Name
+    RDC_Occupants,           !- Schedule:Week Name 1
+    1,                       !- Start Month 1
+    1,                       !- Start Day 1
+    12,                      !- End Month 1
+    31;                      !- End Day 1
+
+Schedule:Year,
+    RDC_People,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    RDC_People,              !- Schedule:Week Name 1
+    1,                       !- Start Month 1
+    1,                       !- Start Day 1
+    12,                      !- End Month 1
+    31;                      !- End Day 1
+
+Schedule:Year,
+    Volets_RDC,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Volets_RDC,              !- Schedule:Week Name 1
+    1,                       !- Start Month 1
+    1,                       !- Start Day 1
+    12,                      !- End Month 1
+    31;                      !- End Day 1
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:COMPACT ===========
+
+Schedule:Compact,
+    On,                      !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 1;         !- Field 4
+
+Schedule:Compact,
+    Off,                     !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 0;         !- Field 4
+
+Schedule:Compact,
+    Occupant_ch2,            !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 1;         !- Field 4
+
+Schedule:Compact,
+    Occupant_ch3,            !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 2;         !- Field 4
+
+Schedule:Compact,
+    People_ch2,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 80,         !- Field 4
+    Until: 8:00, 120,        !- Field 6
+    Until: 17:00, 0,         !- Field 8
+    Until: 20:00, 120,       !- Field 10
+    Until: 24:00, 80;        !- Field 12
+
+Schedule:Compact,
+    People_ch3,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 80,         !- Field 4
+    Until: 8:00, 120,        !- Field 6
+    Until: 22:00, 0,         !- Field 8
+    Until: 23:00, 120,       !- Field 10
+    Until: 24:00, 80;        !- Field 12
+
+Schedule:Compact,
+    Chauffage_ch2,           !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 18,         !- Field 4
+    Until: 8:00, 21,         !- Field 6
+    Until: 17:00, 15,        !- Field 8
+    Until: 20:00, 21,        !- Field 10
+    Until: 24:00, 18;        !- Field 12
+
+Schedule:Compact,
+    Chauffage_ch3,           !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 18,         !- Field 4
+    Until: 8:00, 21,         !- Field 6
+    Until: 22:00, 15,        !- Field 8
+    Until: 23:00, 21,        !- Field 10
+    Until: 24:00, 18;        !- Field 12
+
+Schedule:Compact,
+    Volets_ch2,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 1,          !- Field 4
+    Until: 20:00, 0,         !- Field 6
+    Until: 24:00, 1;         !- Field 8
+
+Schedule:Compact,
+    Volets_ch3,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 1,          !- Field 4
+    Until: 23:00, 0,         !- Field 6
+    Until: 24:00, 1;         !- Field 8
+
+Schedule:Compact,
+    Chauffage_ch1,           !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 18,         !- Field 4
+    Until: 8:00, 21,         !- Field 6
+    Until: 17:00, 15,        !- Field 8
+    Until: 20:00, 21,        !- Field 10
+    Until: 24:00, 18;        !- Field 12
+
+Schedule:Compact,
+    Volets_ch1,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 7:00, 1,          !- Field 4
+    Until: 20:00, 0,         !- Field 6
+    Until: 24:00, 1;         !- Field 8
+
+Schedule:Compact,
+    Volets_sdb,              !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 0;         !- Field 4
+
+Schedule:Compact,
+    Ventilation_ch1,         !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 8:00, .1169,      !- Field 4
+    Until: 17:00, .0441,     !- Field 6
+    Until: 24:00, .1169;     !- Field 8
+
+Schedule:Compact,
+    Ventilation_ch3,         !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 8:00, .1803,      !- Field 4
+    Until: 22:00, .068,      !- Field 6
+    Until: 24:00, .1803;     !- Field 8
+
+Schedule:Compact,
+    Ventilation_ch2,         !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 8:00, .1709,      !- Field 4
+    Until: 17:00, .0644,     !- Field 6
+    Until: 24:00, .1709;     !- Field 8
+
+Schedule:Compact,
+    SCHEDULE_CO-COOLING,     !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, T_INT_VARIABLE;
+                             !- Field 4
+
+Schedule:Compact,
+    HVACTemplate-Always 50,  !- Name
+    HVACTemplate Any Number, !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 50;        !- Field 4
+
+Schedule:Compact,
+    HVACTemplate-Always 19,  !- Name
+    HVACTemplate Any Number, !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 19;        !- Field 4
+
+Schedule:Compact,
+    HVACTemplate-Always,     !- Name
+    HVACTemplate Any Number, !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00; 
+Schedule:Compact,
+    HVACTemplate-Always 4,   !- Name
+    HVACTemplate Any Number, !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 4;         !- Field 4
+
+Schedule:Compact,
+    SCHEDULE_CO-HEATING,     !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 10;        !- Field 4
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+
+Material,
+    Laine de Verre 5cm,      !- Name
+    Rough,                   !- Roughness
+    0.05,                    !- Thickness {m}
+    0.032,                   !- Conductivity {W/m-K}
+    12,                      !- Density {kg/m3}
+    840,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    Placo_13mm,              !- Name
+    MediumRough,             !- Roughness
+    0.013,                   !- Thickness {m}
+    0.25,                    !- Conductivity {W/m-K}
+    825,                     !- Density {kg/m3}
+    1008,                    !- Specific Heat {J/kg-K}
+    0.99999,                 !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    BetonBanche,             !- Name
+    Rough,                   !- Roughness
+    0.15,                    !- Thickness {m}
+    1.75,                    !- Conductivity {W/m-K}
+    2500,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    LDV32_10cm,              !- Name
+    Rough,                   !- Roughness
+    0.1,                     !- Thickness {m}
+    0.032,                   !- Conductivity {W/m-K}
+    12,                      !- Density {kg/m3}
+    840,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    LDV35_40cm,              !- Name
+    Rough,                   !- Roughness
+    0.4,                     !- Thickness {m}
+    0.035,                   !- Conductivity {W/m-K}
+    12,                      !- Density {kg/m3}
+    840,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    PolystyreneXtrude29,     !- Name
+    MediumSmooth,            !- Roughness
+    0.2,                     !- Thickness {m}
+    0.029,                   !- Conductivity {W/m-K}
+    35,                      !- Density {kg/m3}
+    1400,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    PolystyreneXtrude30,     !- Name
+    MediumSmooth,            !- Roughness
+    0.2,                     !- Thickness {m}
+    0.1,                     !- Conductivity {W/m-K}
+    35,                      !- Density {kg/m3}
+    1400,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    Hourdis,                 !- Name
+    Rough,                   !- Roughness
+    0.16,                    !- Thickness {m}
+    1.23,                    !- Conductivity {W/m-K}
+    1300,                    !- Density {kg/m3}
+    648,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    DalleCompression,        !- Name
+    Rough,                   !- Roughness
+    0.04,                    !- Thickness {m}
+    1.75,                    !- Conductivity {W/m-K}
+    2400,                    !- Density {kg/m3}
+    880,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    ChapeBeton,              !- Name
+    MediumSmooth,            !- Roughness
+    0.08,                    !- Thickness {m}
+    1.75,                    !- Conductivity {W/m-K}
+    2200,                    !- Density {kg/m3}
+    880,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    DalleBA,                 !- Name
+    Rough,                   !- Roughness
+    0.16,                    !- Thickness {m}
+    2.5,                     !- Conductivity {W/m-K}
+    2500,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    PlatreFinition,          !- Name
+    MediumSmooth,            !- Roughness
+    0.015,                   !- Thickness {m}
+    0.43,                    !- Conductivity {W/m-K}
+    1200,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    EnduitExt,               !- Name
+    MediumRough,             !- Roughness
+    0.015,                   !- Thickness {m}
+    1,                       !- Conductivity {W/m-K}
+    1450,                    !- Density {kg/m3}
+    500,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    Carrelage,               !- Name
+    Smooth,                  !- Roughness
+    0.01,                    !- Thickness {m}
+    0.41,                    !- Conductivity {W/m-K}
+    1200,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    Gravier,                 !- Name
+    VeryRough,               !- Roughness
+    0.05,                    !- Thickness {m}
+    1.4,                     !- Conductivity {W/m-K}
+    2100,                    !- Density {kg/m3}
+    650,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    EnduitVS,                !- Name
+    MediumRough,             !- Roughness
+    0.015,                   !- Thickness {m}
+    1,                       !- Conductivity {W/m-K}
+    1800,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    Tuiles,                  !- Name
+    MediumRough,             !- Roughness
+    0.015,                   !- Thickness {m}
+    2.2,                     !- Conductivity {W/m-K}
+    2700,                    !- Density {kg/m3}
+    753,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    Charpente,               !- Name
+    MediumRough,             !- Roughness
+    0.01,                    !- Thickness {m}
+    0.16,                    !- Conductivity {W/m-K}
+    500,                     !- Density {kg/m3}
+    2400,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    SopremaPavaflexConfort,  !- Name
+    MediumRough,             !- Roughness
+    0.34,                    !- Thickness {m}
+    0.15,                    !- Conductivity {W/m-K}
+    50,                      !- Density {kg/m3}
+    2100,                    !- Specific Heat {J/kg-K}
+    0.6,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    PlancherBois,            !- Name
+    MediumRough,             !- Roughness
+    0.02,                    !- Thickness {m}
+    0.13,                    !- Conductivity {W/m-K}
+    600,                     !- Density {kg/m3}
+    2500,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:NOMASS ===========
+
+Material:NoMass,
+    Porte,                   !- Name
+    MediumSmooth,            !- Roughness
+    0.8;                     !- Thermal Resistance {m2-K/W}
+
+Material:NoMass,
+    LameAirVert2d7cm,        !- Name
+    MediumRough,             !- Roughness
+    0.23;                    !- Thermal Resistance {m2-K/W}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:SIMPLEGLAZINGSYSTEM ===========
+
+WindowMaterial:SimpleGlazingSystem,
+    pf_S_R+1,                !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.39;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    pf_S_RDC,                !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.47;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    pf_O_RDC,                !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.41;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    f_E_R+1,                 !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.28;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    f_R+2_E-RDC,             !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.32;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    f_O_RDC,                 !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.34;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    f_N_RDC,                 !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.24;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    f_N_R+1,                 !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.21;                    !- Solar Heat Gain Coefficient
+
+WindowMaterial:SimpleGlazingSystem,
+    pf_O_R+1,                !- Name
+    3,                       !- U-Factor {W/m2-K}
+    0.41;                    !- Solar Heat Gain Coefficient
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:SHADE ===========
+
+WindowMaterial:Shade,
+    VoletsR,                 !- Name
+    0.02,                    !- Solar Transmittance {dimensionless}
+    0.66,                    !- Solar Reflectance {dimensionless}
+    0.02,                    !- Visible Transmittance {dimensionless}
+    0.66,                    !- Visible Reflectance {dimensionless}
+    0.92,                    !- Infrared Hemispherical Emissivity {dimensionless}
+    0,                       !- Infrared Transmittance {dimensionless}
+    0.008,                   !- Thickness {m}
+    0.17,                    !- Conductivity {W/m-K}
+    0.03,                    !- Shade to Glass Distance {m}
+    0,                       !- Top Opening Multiplier
+    0,                       !- Bottom Opening Multiplier
+    0,                       !- Left-Side Opening Multiplier
+    0,                       !- Right-Side Opening Multiplier
+    0;                       !- Airflow Permeability {dimensionless}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    Porte,                   !- Name
+    Porte;                   !- Outside Layer
+
+Construction,
+    MurExt_isole,            !- Name
+    EnduitExt,               !- Outside Layer
+    PolystyreneXtrude30,     !- Layer 2
+    EnduitVS,                !- Layer 3
+    BetonBanche,             !- Layer 4
+    PlatreFinition;          !- Layer 5
+
+Construction,
+    PB_RDC_isole,            !- Name
+    PolystyreneXtrude30,     !- Outside Layer
+    DalleBA,                 !- Layer 2
+    ChapeBeton,              !- Layer 3
+    Carrelage;               !- Layer 4
+
+Construction,
+    PH_VS_isole,             !- Name
+    Carrelage,               !- Outside Layer
+    ChapeBeton,              !- Layer 2
+    DalleBA,                 !- Layer 3
+    PolystyreneXtrude30;     !- Layer 4
+
+Construction,
+    PH_RDC,                  !- Name
+    ChapeBeton,              !- Outside Layer
+    DalleCompression,        !- Layer 2
+    Hourdis;                 !- Layer 3
+
+Construction,
+    PB_COMBLES_isole,        !- Name
+    LDV35_40cm;              !- Outside Layer
+
+Construction,
+    Toit,                    !- Name
+    Tuiles,                  !- Outside Layer
+    Charpente;               !- Layer 2
+
+Construction,
+    PB_VS,                   !- Name
+    Gravier;                 !- Outside Layer
+
+Construction,
+    Mur_vs,                  !- Name
+    PolystyreneXtrude30,     !- Outside Layer
+    EnduitVS,                !- Layer 2
+    BetonBanche,             !- Layer 3
+    EnduitVS,                !- Layer 4
+    PolystyreneXtrude29;     !- Layer 5
+
+Construction,
+    PB_R+1,                  !- Name
+    Hourdis,                 !- Outside Layer
+    DalleCompression,        !- Layer 2
+    ChapeBeton;              !- Layer 3
+
+Construction,
+    PH_R+1_isole,            !- Name
+    LDV35_40cm;              !- Outside Layer
+
+Construction,
+    pf_S_R+1,                !- Name
+    pf_S_R+1;                !- Outside Layer
+
+Construction,
+    pf_S_RDC,                !- Name
+    pf_S_RDC;                !- Outside Layer
+
+Construction,
+    pf_O_RDC,                !- Name
+    pf_O_RDC;                !- Outside Layer
+
+Construction,
+    f_E_R+1,                 !- Name
+    f_E_R+1;                 !- Outside Layer
+
+Construction,
+    f_R+2_E-RDC,             !- Name
+    f_R+2_E-RDC;             !- Outside Layer
+
+Construction,
+    f_O_RDC,                 !- Name
+    f_O_RDC;                 !- Outside Layer
+
+Construction,
+    f_N_RDC,                 !- Name
+    f_N_RDC;                 !- Outside Layer
+
+Construction,
+    f_N_R+1,                 !- Name
+    f_N_R+1;                 !- Outside Layer
+
+Construction,
+    VR_pf_S_R+1,             !- Name
+    VoletsR,                 !- Outside Layer
+    pf_S_R+1;                !- Layer 2
+
+Construction,
+    VR_pf_S_RDC,             !- Name
+    VoletsR,                 !- Outside Layer
+    pf_S_RDC;                !- Layer 2
+
+Construction,
+    VR_pf_O_RDC,             !- Name
+    VoletsR,                 !- Outside Layer
+    pf_O_RDC;                !- Layer 2
+
+Construction,
+    VR_f_E_R+1,              !- Name
+    VoletsR,                 !- Outside Layer
+    f_E_R+1;                 !- Layer 2
+
+Construction,
+    VR_f_R+2_E-RDC,          !- Name
+    VoletsR,                 !- Outside Layer
+    f_R+2_E-RDC;             !- Layer 2
+
+Construction,
+    VR_f_O_RDC,              !- Name
+    VoletsR,                 !- Outside Layer
+    f_O_RDC;                 !- Layer 2
+
+Construction,
+    VR_f_N_RDC,              !- Name
+    VoletsR,                 !- Outside Layer
+    f_N_RDC;                 !- Layer 2
+
+Construction,
+    VR_f_N_R+1,              !- Name
+    VoletsR,                 !- Outside Layer
+    f_N_R+1;                 !- Layer 2
+
+Construction,
+    VR_pf_O_R+1,             !- Name
+    VoletsR,                 !- Outside Layer
+    pf_O_R+1;                !- Layer 2
+
+Construction,
+    pf_O_R+1,                !- Name
+    pf_O_R+1;                !- Outside Layer
+
+Construction,
+    Cloisons_Etage,          !- Name
+    Placo_13mm,              !- Outside Layer
+    Laine de Verre 5cm,      !- Layer 2
+    Placo_13mm;              !- Layer 3
+
+Construction,
+    PignonCombles,           !- Name
+    EnduitExt,               !- Outside Layer
+    PolystyreneXtrude30,     !- Layer 2
+    EnduitVS,                !- Layer 3
+    BetonBanche,             !- Layer 4
+    LDV32_10cm;              !- Layer 5
+
+Construction,
+    Toiture,                 !- Name
+    Tuiles,                  !- Outside Layer
+    LameAirVert2d7cm,        !- Layer 2
+    SopremaPavaflexConfort,  !- Layer 3
+    PlatreFinition;          !- Layer 4
+
+Construction,
+    PlancherComble,          !- Name
+    Placo_13mm,              !- Outside Layer
+    PlancherBois;            !- Layer 2
+
+Construction,
+    PlafondRp1,              !- Name
+    PlancherBois,            !- Outside Layer
+    Placo_13mm;              !- Layer 2
+
+
+!-   ===========  ALL OBJECTS IN CLASS: GLOBALGEOMETRYRULES ===========
+
+GlobalGeometryRules,
+    UpperLeftCorner,         !- Starting Vertex Position
+    Counterclockwise,        !- Vertex Entry Direction
+    Relative;                !- Coordinate System
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONE ===========
+
+Zone,
+    RDC Thermal Zone,        !- Name
+    0.0,                     !- Direction of Relative North {deg}
+    0.0, 0.0, 0.0,                      !- X,Y,Z  {m}
+    ,                        !- Type
+    1,                       !- Multiplier
+    ,                        !- Ceiling Height {m}
+    ,                        !- Volume {m3}
+    autocalculate;           !- Floor Area {m2}
+
+Zone,
+    VS Thermal Zone,         !- Name
+    0.0,                     !- Direction of Relative North {deg}
+    0.0, 0.0, -0.8,                     !- X,Y,Z  {m}
+    ,                        !- Type
+    1;                       !- Multiplier
+
+Zone,
+    COMBLE Thermal Zone,     !- Name
+    0.0,                     !- Direction of Relative North {deg}
+    0.0, 0.0, 5.2,                      !- X,Y,Z  {m}
+    ,                        !- Type
+    1;                       !- Multiplier
+
+Zone,
+    ZCh1,                    !- Name
+    -0,                      !- Direction of Relative North {deg}
+    0, 2.64, 2.65;                      !- X,Y,Z  {m}
+
+Zone,
+    ZCh2,                    !- Name
+    -0,                      !- Direction of Relative North {deg}
+    0, 2.64, 2.65;                      !- X,Y,Z  {m}
+
+Zone,
+    ZCh3,                    !- Name
+    -0,                      !- Direction of Relative North {deg}
+    3.85, 2.64, 2.65;                   !- X,Y,Z  {m}
+
+Zone,
+    ZSdb,                    !- Name
+    -0,                      !- Direction of Relative North {deg}
+    -7.21911419532262e-016, 2.64, 2.65; !- X,Y,Z  {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: BUILDINGSURFACE:DETAILED ===========
+
+BuildingSurface:Detailed,
+    PAN NORD,                !- Name
+    Roof,                    !- Surface Type
+    Toiture,                 !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 3.25, 1.8,                     !- X,Y,Z  1 {m}
+    7.5, 6.5, -3.15760934833087e-016,   !- X,Y,Z  2 {m}
+    0, 6.5, -3.15760934833087e-016,     !- X,Y,Z  3 {m}
+    0, 3.25, 1.8;                       !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PAN SUD,                 !- Name
+    Roof,                    !- Surface Type
+    Toiture,                 !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 3.25, 1.8,                       !- X,Y,Z  1 {m}
+    0, 0, 0,                            !- X,Y,Z  2 {m}
+    7.5, 0, 0,                          !- X,Y,Z  3 {m}
+    7.5, 3.25, 1.8;                     !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PIGNON EST,              !- Name
+    Wall,                    !- Surface Type
+    PignonCombles,           !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 3.25, 1.8,                     !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    7.5, 6.5, -3.15760934833087e-016;   !- X,Y,Z  3 {m}
+
+BuildingSurface:Detailed,
+    PIGNON OUEST,            !- Name
+    Wall,                    !- Surface Type
+    PignonCombles,           !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 3.25, 1.8,                       !- X,Y,Z  1 {m}
+    0, 6.5, -3.15760934833087e-016,     !- X,Y,Z  2 {m}
+    0, 0, 0;                            !- X,Y,Z  3 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER COMBLE BAS,     !- Name
+    Floor,                   !- Surface Type
+    PB_COMBLES_isole,        !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 24,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 6.5, -3.15760934833087e-016,   !- X,Y,Z  1 {m}
+    7.5, 2.64, 7.21911419532262e-016,   !- X,Y,Z  2 {m}
+    3.85, 2.64, 0,                      !- X,Y,Z  3 {m}
+    3.85, 6.5, 7.21911419532262e-016;   !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER COMBLE BAS 1,   !- Name
+    Floor,                   !- Surface Type
+    PB_COMBLES_isole,        !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 12,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 2.64, 7.21911419532262e-016,   !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    3.85, 0, 0,                         !- X,Y,Z  3 {m}
+    3.85, 2.64, 0;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER COMBLE BAS 2,   !- Name
+    Floor,                   !- Surface Type
+    PB_COMBLES_isole,        !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 18,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 6.5, -3.15760934833087e-016,     !- X,Y,Z  1 {m}
+    3.85, 6.5, 7.21911419532262e-016,   !- X,Y,Z  2 {m}
+    3.85, 2.64, 0,                      !- X,Y,Z  3 {m}
+    0, 2.64, 0;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER COMBLE BAS 3,   !- Name
+    Floor,                   !- Surface Type
+    PB_COMBLES_isole,        !- Construction Name
+    COMBLE Thermal Zone,     !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 6,               !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 2.64, 0,                      !- X,Y,Z  1 {m}
+    3.85, 0, 0,                         !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 2.64, 0;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR RDC EST,             !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 0, 2.65,                       !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    7.5, 6.5, 0,                        !- X,Y,Z  3 {m}
+    7.5, 6.5, 2.65;                     !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR RDC NORD,            !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 6.5, 2.65,                     !- X,Y,Z  1 {m}
+    7.5, 6.5, 0,                        !- X,Y,Z  2 {m}
+    0, 6.5, 0,                          !- X,Y,Z  3 {m}
+    0, 6.5, 2.65;                       !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR RDC OUEST,           !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 6.5, 2.65,                       !- X,Y,Z  1 {m}
+    0, 6.5, 0,                          !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 0, 2.65;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR RDC SUD,             !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 0, 2.65,                         !- X,Y,Z  1 {m}
+    0, 0, 0,                            !- X,Y,Z  2 {m}
+    7.5, 0, 0,                          !- X,Y,Z  3 {m}
+    7.5, 0, 2.65;                       !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER RDC BAS,        !- Name
+    Floor,                   !- Surface Type
+    PB_RDC_isole,            !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Adiabatic,               !- Outside Boundary Condition
+    VS PLANCHER HAUT,        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 6.5, 0,                        !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 6.5, 0;                          !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER RDC HAUT,       !- Name
+    Ceiling,                 !- Surface Type
+    PH_RDC,                  !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 7,               !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 0, 2.65,                       !- X,Y,Z  1 {m}
+    7.5, 2.64, 2.65,                    !- X,Y,Z  2 {m}
+    3.85, 2.64, 2.65,                   !- X,Y,Z  3 {m}
+    3.85, 0, 2.65;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER RDC HAUT 1,     !- Name
+    Ceiling,                 !- Surface Type
+    PH_RDC,                  !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 19,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 2.64, 2.65,                    !- X,Y,Z  1 {m}
+    7.5, 6.5, 2.65,                     !- X,Y,Z  2 {m}
+    3.85, 6.5, 2.65,                    !- X,Y,Z  3 {m}
+    3.85, 2.64, 2.65;                   !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER RDC HAUT 2,     !- Name
+    Ceiling,                 !- Surface Type
+    PH_RDC,                  !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 13,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 2.64, 2.65,                   !- X,Y,Z  1 {m}
+    3.85, 6.5, 2.65,                    !- X,Y,Z  2 {m}
+    0, 6.5, 2.65,                       !- X,Y,Z  3 {m}
+    0, 2.64, 2.65;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    PLANCHER RDC HAUT 3,     !- Name
+    Ceiling,                 !- Surface Type
+    PH_RDC,                  !- Construction Name
+    RDC Thermal Zone,        !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 1,               !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 0, 2.65,                      !- X,Y,Z  1 {m}
+    3.85, 2.64, 2.65,                   !- X,Y,Z  2 {m}
+    0, 2.64, 2.65,                      !- X,Y,Z  3 {m}
+    0, 0, 2.65;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR VS EST,              !- Name
+    Wall,                    !- Surface Type
+    Mur_vs,                  !- Construction Name
+    VS Thermal Zone,         !- Zone Name
+    ,                        !- Space Name
+    Ground,                  !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 0, 0.8,                        !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    7.5, 6.5, 0,                        !- X,Y,Z  3 {m}
+    7.5, 6.5, 0.8;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR VS NORD,             !- Name
+    Wall,                    !- Surface Type
+    Mur_vs,                  !- Construction Name
+    VS Thermal Zone,         !- Zone Name
+    ,                        !- Space Name
+    Ground,                  !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 6.5, 0.8,                      !- X,Y,Z  1 {m}
+    7.5, 6.5, 0,                        !- X,Y,Z  2 {m}
+    0, 6.5, 0,                          !- X,Y,Z  3 {m}
+    0, 6.5, 0.8;                        !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR VS OUEST,            !- Name
+    Wall,                    !- Surface Type
+    Mur_vs,                  !- Construction Name
+    VS Thermal Zone,         !- Zone Name
+    ,                        !- Space Name
+    Ground,                  !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 6.5, 0.8,                        !- X,Y,Z  1 {m}
+    0, 6.5, 0,                          !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 0, 0.8;                          !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    MUR VS SUD,              !- Name
+    Wall,                    !- Surface Type
+    Mur_vs,                  !- Construction Name
+    VS Thermal Zone,         !- Zone Name
+    ,                        !- Space Name
+    Ground,                  !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 0, 0.8,                          !- X,Y,Z  1 {m}
+    0, 0, 0,                            !- X,Y,Z  2 {m}
+    7.5, 0, 0,                          !- X,Y,Z  3 {m}
+    7.5, 0, 0.8;                        !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    VS PLANCHER BAS,         !- Name
+    Floor,                   !- Surface Type
+    PB_VS,                   !- Construction Name
+    VS Thermal Zone,         !- Zone Name
+    ,                        !- Space Name
+    Ground,                  !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 6.5, 0,                        !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 6.5, 0;                          !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    VS PLANCHER HAUT,        !- Name
+    Ceiling,                 !- Surface Type
+    PH_VS_isole,             !- Construction Name
+    VS Thermal Zone,         !- Zone Name
+    ,                        !- Space Name
+    Adiabatic,               !- Outside Boundary Condition
+    PLANCHER RDC BAS,        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 0, 0.8,                        !- X,Y,Z  1 {m}
+    7.5, 6.5, 0.8,                      !- X,Y,Z  2 {m}
+    0, 6.5, 0.8,                        !- X,Y,Z  3 {m}
+    0, 0, 0.8;                          !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 13,              !- Name
+    Floor,                   !- Surface Type
+    PB_R+1,                  !- Construction Name
+    ZCh1,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER RDC HAUT 2,     !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 3.86, 0,                      !- X,Y,Z  1 {m}
+    3.85, 0, 0,                         !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 3.86, 0;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 14,              !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZCh1,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 3.86, 2.55,                      !- X,Y,Z  1 {m}
+    0, 3.86, 0,                         !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 0, 2.55;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 15,              !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZCh1,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 3.86, 2.55,                   !- X,Y,Z  1 {m}
+    3.85, 3.86, 0,                      !- X,Y,Z  2 {m}
+    0, 3.86, 0,                         !- X,Y,Z  3 {m}
+    0, 3.86, 2.55;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 16,              !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZCh1,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 22,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 0, 2.55,                      !- X,Y,Z  1 {m}
+    3.85, 0, 0,                         !- X,Y,Z  2 {m}
+    3.85, 3.86, 0,                      !- X,Y,Z  3 {m}
+    3.85, 3.86, 2.55;                   !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 17,              !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZCh1,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 2,               !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 0, 2.55,                         !- X,Y,Z  1 {m}
+    0, 0, 0,                            !- X,Y,Z  2 {m}
+    3.85, 0, 0,                         !- X,Y,Z  3 {m}
+    3.85, 0, 2.55;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 18,              !- Name
+    Ceiling,                 !- Surface Type
+    PH_R+1_isole,            !- Construction Name
+    ZCh1,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER COMBLE BAS 2,   !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 0, 2.55,                      !- X,Y,Z  1 {m}
+    3.85, 3.86, 2.55,                   !- X,Y,Z  2 {m}
+    0, 3.86, 2.55,                      !- X,Y,Z  3 {m}
+    0, 0, 2.55;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 1,               !- Name
+    Floor,                   !- Surface Type
+    PB_R+1,                  !- Construction Name
+    ZCh2,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER RDC HAUT 3,     !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 0, 0,                         !- X,Y,Z  1 {m}
+    3.85, -2.64, 0,                     !- X,Y,Z  2 {m}
+    0, -2.64, 0,                        !- X,Y,Z  3 {m}
+    0, 0, 0;                            !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 2,               !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZCh2,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 17,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 0, 2.55,                      !- X,Y,Z  1 {m}
+    3.85, 0, 0,                         !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 0, 2.55;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 3,               !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZCh2,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 11,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, -2.64, 2.55,                  !- X,Y,Z  1 {m}
+    3.85, -2.64, 0,                     !- X,Y,Z  2 {m}
+    3.85, 0, 0,                         !- X,Y,Z  3 {m}
+    3.85, 0, 2.55;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 4,               !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZCh2,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, -2.64, 2.55,                     !- X,Y,Z  1 {m}
+    0, -2.64, 0,                        !- X,Y,Z  2 {m}
+    3.85, -2.64, 0,                     !- X,Y,Z  3 {m}
+    3.85, -2.64, 2.55;                  !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 5,               !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZCh2,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 0, 2.55,                         !- X,Y,Z  1 {m}
+    0, 0, 0,                            !- X,Y,Z  2 {m}
+    0, -2.64, 0,                        !- X,Y,Z  3 {m}
+    0, -2.64, 2.55;                     !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 6,               !- Name
+    Ceiling,                 !- Surface Type
+    PH_R+1_isole,            !- Construction Name
+    ZCh2,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER COMBLE BAS 3,   !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, -2.64, 2.55,                  !- X,Y,Z  1 {m}
+    3.85, 0, 2.55,                      !- X,Y,Z  2 {m}
+    0, 0, 2.55,                         !- X,Y,Z  3 {m}
+    0, -2.64, 2.55;                     !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 10,              !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZCh3,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, -2.64, 2.55,                     !- X,Y,Z  1 {m}
+    0, -2.64, 0,                        !- X,Y,Z  2 {m}
+    3.65, -2.64, 0,                     !- X,Y,Z  3 {m}
+    3.65, -2.64, 2.55;                  !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 11,              !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZCh3,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 3,               !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0, 0, 2.55,                         !- X,Y,Z  1 {m}
+    0, 0, 0,                            !- X,Y,Z  2 {m}
+    0, -2.64, 0,                        !- X,Y,Z  3 {m}
+    0, -2.64, 2.55;                     !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 12,              !- Name
+    Ceiling,                 !- Surface Type
+    PH_R+1_isole,            !- Construction Name
+    ZCh3,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER COMBLE BAS 1,   !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.65, -2.64, 2.55,                  !- X,Y,Z  1 {m}
+    3.65, 0, 2.55,                      !- X,Y,Z  2 {m}
+    0, 0, 2.55,                         !- X,Y,Z  3 {m}
+    0, -2.64, 2.55;                     !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 7,               !- Name
+    Floor,                   !- Surface Type
+    PB_R+1,                  !- Construction Name
+    ZCh3,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER RDC HAUT,       !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.65, 0, 0,                         !- X,Y,Z  1 {m}
+    3.65, -2.64, 0,                     !- X,Y,Z  2 {m}
+    0, -2.64, 0,                        !- X,Y,Z  3 {m}
+    0, 0, 0;                            !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 8,               !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZCh3,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 21,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.65, 0, 2.55,                      !- X,Y,Z  1 {m}
+    3.65, 0, 0,                         !- X,Y,Z  2 {m}
+    0, 0, 0,                            !- X,Y,Z  3 {m}
+    0, 0, 2.55;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 9,               !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZCh3,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.65, -2.64, 2.55,                  !- X,Y,Z  1 {m}
+    3.65, -2.64, 0,                     !- X,Y,Z  2 {m}
+    3.65, 0, 0,                         !- X,Y,Z  3 {m}
+    3.65, 0, 2.55;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 19,              !- Name
+    Floor,                   !- Surface Type
+    PB_R+1,                  !- Construction Name
+    ZSdb,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER RDC HAUT 1,     !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 3.86, 0,                       !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    3.85, 0, 0,                         !- X,Y,Z  3 {m}
+    3.85, 3.86, 0;                      !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 20,              !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZSdb,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 0, 2.55,                       !- X,Y,Z  1 {m}
+    7.5, 0, 0,                          !- X,Y,Z  2 {m}
+    7.5, 3.86, 0,                       !- X,Y,Z  3 {m}
+    7.5, 3.86, 2.55;                    !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 21,              !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZSdb,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 8,               !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 0, 2.55,                      !- X,Y,Z  1 {m}
+    3.85, 0, 0,                         !- X,Y,Z  2 {m}
+    7.5, 0, 0,                          !- X,Y,Z  3 {m}
+    7.5, 0, 2.55;                       !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 22,              !- Name
+    Wall,                    !- Surface Type
+    Cloisons_Etage,          !- Construction Name
+    ZSdb,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    Surface 16,              !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    3.85, 0, 2.55,                      !- X,Y,Z  1 {m}
+    3.85, 3.86, 2.55,                   !- X,Y,Z  2 {m}
+    3.85, 3.86, 0,                      !- X,Y,Z  3 {m}
+    3.85, 0, 0;                         !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 23,              !- Name
+    Wall,                    !- Surface Type
+    MurExt_isole,            !- Construction Name
+    ZSdb,                    !- Zone Name
+    ,                        !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 3.86, 2.55,                    !- X,Y,Z  1 {m}
+    7.5, 3.86, 0,                       !- X,Y,Z  2 {m}
+    3.85, 3.86, 0,                      !- X,Y,Z  3 {m}
+    3.85, 3.86, 2.55;                   !- X,Y,Z  4 {m}
+
+BuildingSurface:Detailed,
+    Surface 24,              !- Name
+    Ceiling,                 !- Surface Type
+    PH_R+1_isole,            !- Construction Name
+    ZSdb,                    !- Zone Name
+    ,                        !- Space Name
+    Surface,                 !- Outside Boundary Condition
+    PLANCHER COMBLE BAS,     !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    7.5, 0, 2.55,                       !- X,Y,Z  1 {m}
+    7.5, 3.86, 2.55,                    !- X,Y,Z  2 {m}
+    3.85, 3.86, 2.55,                   !- X,Y,Z  3 {m}
+    3.85, 0, 2.55;                      !- X,Y,Z  4 {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: FENESTRATIONSURFACE:DETAILED ===========
+
+FenestrationSurface:Detailed,
+    FEN RDC SO,              !- Name
+    Window,                  !- Surface Type
+    pf_S_RDC,                !- Construction Name
+    MUR RDC SUD,             !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    1.050000000000, 0.000000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    1.050000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    3.350000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    3.350000000000, 0.000000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    FEN RDC SE,              !- Name
+    Window,                  !- Surface Type
+    pf_S_RDC,                !- Construction Name
+    MUR RDC SUD,             !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    4.150000000000, 0.000000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    4.150000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    6.450000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    6.450000000000, 0.000000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    FEN Pignon E,            !- Name
+    Window,                  !- Surface Type
+    f_R+2_E-RDC,             !- Construction Name
+    PIGNON EST,              !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    7.500000000000, 2.850000000000, 1.250000000000,
+                                        !- X,Y,Z  1 {m}
+    7.500000000000, 2.850000000000, 0.200000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 3.650000000000, 0.200000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.650000000000, 1.250000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    PORTE,                   !- Name
+    Door,                    !- Surface Type
+    Porte,                   !- Construction Name
+    MUR RDC EST,             !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    ,                        !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    7.500000000000, 4.500000000000, 2.280000000000,
+                                        !- X,Y,Z  1 {m}
+    7.500000000000, 4.500000000000, 0.040000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 5.500000000000, 0.040000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 5.500000000000, 2.280000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    FEN RDC N,               !- Name
+    Window,                  !- Surface Type
+    f_N_RDC,                 !- Construction Name
+    MUR RDC NORD,            !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    2.400000000000, 6.500000000000, 2.050000000000,
+                                        !- X,Y,Z  1 {m}
+    2.400000000000, 6.500000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    1.600000000000, 6.500000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    1.600000000000, 6.500000000000, 2.050000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    FEN RDC ON,              !- Name
+    Window,                  !- Surface Type
+    f_O_RDC,                 !- Construction Name
+    MUR RDC OUEST,           !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    0.000000000000, 4.350000000000, 1.950000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 4.350000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 3.350000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 3.350000000000, 1.950000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    FEN RDC OS,              !- Name
+    Window,                  !- Surface Type
+    pf_O_RDC,                !- Construction Name
+    MUR RDC OUEST,           !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    0.000000000000, 2.500000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 2.500000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 1.500000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 1.500000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    FEN RDC ES,              !- Name
+    Window,                  !- Surface Type
+    f_R+2_E-RDC,             !- Construction Name
+    MUR RDC EST,             !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    7.500000000000, 2.600000000000, 2.040000000000,
+                                        !- X,Y,Z  1 {m}
+    7.500000000000, 2.600000000000, 0.990000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 3.400000000000, 0.990000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.400000000000, 2.040000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    FEN Pignon O,            !- Name
+    Window,                  !- Surface Type
+    f_R+2_E-RDC,             !- Construction Name
+    PIGNON OUEST,            !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    autocalculate,           !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    4,                       !- Number of Vertices
+    0.000000000000, 3.650000000000, 1.250000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 3.650000000000, 0.200000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 2.850000000000, 0.200000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 2.850000000000, 1.250000000000;
+                                        !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    Sub Surface 3,           !- Name
+    Window,                  !- Surface Type
+    pf_O_R+1,                !- Construction Name
+    Surface 14,              !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    ,                        !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    ,                        !- Number of Vertices
+    0, 1.66, 2.2,                       !- X,Y,Z  1 {m}
+    0, 1.66, 0.0499999999999995,        !- X,Y,Z  2 {m}
+    0, 0.659999999999999, 0.0499999999999995,
+                                        !- X,Y,Z  3 {m}
+    0, 0.659999999999999, 2.2;          !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    Sub Surface 1,           !- Name
+    Window,                  !- Surface Type
+    pf_S_R+1,                !- Construction Name
+    Surface 4,               !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    ,                        !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    ,                        !- Number of Vertices
+    2.2, -2.64, 2.2,                    !- X,Y,Z  1 {m}
+    2.2, -2.64, 0.0499999999999991,     !- X,Y,Z  2 {m}
+    3.6, -2.64, 0.0499999999999991,     !- X,Y,Z  3 {m}
+    3.6, -2.64, 2.2;                    !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    Sub Surface 2,           !- Name
+    Window,                  !- Surface Type
+    pf_S_R+1,                !- Construction Name
+    Surface 10,              !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    ,                        !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    ,                        !- Number of Vertices
+    0.949999999999999, -2.64, 2.2,      !- X,Y,Z  1 {m}
+    0.949999999999999, -2.64, 0.0499999999999995,
+                                        !- X,Y,Z  2 {m}
+    2.35, -2.64, 0.0499999999999995,    !- X,Y,Z  3 {m}
+    2.35, -2.64, 2.2;                   !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    Sub Surface 5,           !- Name
+    Window,                  !- Surface Type
+    f_E_R+1,                 !- Construction Name
+    Surface 20,              !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    ,                        !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    ,                        !- Number of Vertices
+    7.5, 0.81, 2.05,                    !- X,Y,Z  1 {m}
+    7.5, 0.81, 0.999999999999999,       !- X,Y,Z  2 {m}
+    7.5, 1.41, 0.999999999999999,       !- X,Y,Z  3 {m}
+    7.5, 1.41, 2.05;                    !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    Sub Surface 6,           !- Name
+    Window,                  !- Surface Type
+    f_E_R+1,                 !- Construction Name
+    Surface 20,              !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    ,                        !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    ,                        !- Number of Vertices
+    7.5, 1.81, 2.05,                    !- X,Y,Z  1 {m}
+    7.5, 1.81, 0.999999999999999,       !- X,Y,Z  2 {m}
+    7.5, 2.41, 0.999999999999999,       !- X,Y,Z  3 {m}
+    7.5, 2.41, 2.05;                    !- X,Y,Z  4 {m}
+
+FenestrationSurface:Detailed,
+    Sub Surface 4,           !- Name
+    Window,                  !- Surface Type
+    f_N_R+1,                 !- Construction Name
+    Surface 23,              !- Building Surface Name
+    ,                        !- Outside Boundary Condition Object
+    ,                        !- View Factor to Ground
+    ,                        !- Frame and Divider Name
+    ,                        !- Multiplier
+    ,                        !- Number of Vertices
+    5.1, 3.86, 2.05,                    !- X,Y,Z  1 {m}
+    5.1, 3.86, 0.999999999999999,       !- X,Y,Z  2 {m}
+    4.5, 3.86, 0.999999999999999,       !- X,Y,Z  3 {m}
+    4.5, 3.86, 2.05;                    !- X,Y,Z  4 {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWSHADINGCONTROL ===========
+
+WindowShadingControl,
+    VR_pf_SE_R+1-ZCh3,       !- Name
+    ZCh3,                    !- Zone Name
+    1,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_pf_S_R+1,             !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_ch3,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    Sub Surface 2;           !- Fenestration Surface 1 Name
+
+WindowShadingControl,
+    VR_pf_S_RDC-RDC Thermal Zone,  !- Name
+    RDC Thermal Zone,        !- Zone Name
+    1,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_pf_S_RDC,             !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_RDC,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    FEN RDC SO,              !- Fenestration Surface 1 Name
+    FEN RDC SE;              !- Fenestration Surface 2 Name
+
+WindowShadingControl,
+    VR_pf_O_RDC-RDC Thermal Zone,  !- Name
+    RDC Thermal Zone,        !- Zone Name
+    2,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_pf_O_RDC,             !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_RDC,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    FEN RDC OS;              !- Fenestration Surface 1 Name
+
+WindowShadingControl,
+    VR_f_E_R+1-ZSdb,         !- Name
+    ZSdb,                    !- Zone Name
+    1,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_f_E_R+1,              !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_sdb,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    Sub Surface 5,           !- Fenestration Surface 1 Name
+    Sub Surface 6;           !- Fenestration Surface 2 Name
+
+WindowShadingControl,
+    VR_f_R+2_E-RDC-COMBLE Thermal Zone,  !- Name
+    COMBLE Thermal Zone,     !- Zone Name
+    1,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_f_R+2_E-RDC,          !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    ,                        !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    FEN Pignon E,            !- Fenestration Surface 1 Name
+    FEN Pignon O;            !- Fenestration Surface 2 Name
+
+WindowShadingControl,
+    VR_f_R+2_E-RDC-RDC Thermal Zone,  !- Name
+    RDC Thermal Zone,        !- Zone Name
+    3,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_f_R+2_E-RDC,          !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    ,                        !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    FEN RDC ES;              !- Fenestration Surface 1 Name
+
+WindowShadingControl,
+    VR_f_O_RDC-RDC Thermal Zone,  !- Name
+    RDC Thermal Zone,        !- Zone Name
+    4,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_f_O_RDC,              !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_RDC,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    FEN RDC ON;              !- Fenestration Surface 1 Name
+
+WindowShadingControl,
+    VR_f_N_RDC-RDC Thermal Zone,  !- Name
+    RDC Thermal Zone,        !- Zone Name
+    5,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_f_N_RDC,              !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_RDC,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    FEN RDC N;               !- Fenestration Surface 1 Name
+
+WindowShadingControl,
+    VR_f_N_R+1-ZSdb,         !- Name
+    ZSdb,                    !- Zone Name
+    2,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_f_N_R+1,              !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_sdb,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    Sub Surface 4;           !- Fenestration Surface 1 Name
+
+WindowShadingControl,
+    VR_pf_O_R+1-ZCh1,        !- Name
+    ZCh1,                    !- Zone Name
+    1,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_pf_O_R+1,             !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_ch1,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    Sub Surface 3;           !- Fenestration Surface 1 Name
+
+WindowShadingControl,
+    VR_pf_SO_R+1-ZCh2,       !- Name
+    ZCh2,                    !- Zone Name
+    1,                       !- Shading Control Sequence Number
+    ExteriorShade,           !- Shading Type
+    VR_pf_S_R+1,             !- Construction with Shading Name
+    AlwaysOn,                !- Shading Control Type
+    Volets_ch2,              !- Schedule Name
+    ,                        !- Setpoint {W/m2, W or deg C}
+    Yes,                     !- Shading Control Is Scheduled
+    No,                      !- Glare Control Is Active
+    ,                        !- Shading Device Material Name
+    FixedSlatAngle,          !- Type of Slat Angle Control for Blinds
+    ,                        !- Slat Angle Schedule Name
+    ,                        !- Setpoint 2 {W/m2 or deg C}
+    ,                        !- Daylighting Control Object Name
+    Sequential,              !- Multiple Surface Control Type
+    Sub Surface 1;           !- Fenestration Surface 1 Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SHADING:BUILDING:DETAILED ===========
+
+Shading:Building:Detailed,
+    2A2C5C,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    1.050000000000, -0.200000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    1.050000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    1.050000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    1.050000000000, 0.000000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    49D7EA,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    3.350000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  1 {m}
+    3.350000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    1.050000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    1.050000000000, 0.000000000000, 0.050000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    EE6D52,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    3.350000000000, 0.000000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    3.350000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    3.350000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    3.350000000000, -0.200000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    BA67AF,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    3.350000000000, 0.000000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    3.350000000000, -0.200000000000, 2.200000000000,
+                                        !- X,Y,Z  2 {m}
+    1.050000000000, -0.200000000000, 2.200000000000,
+                                        !- X,Y,Z  3 {m}
+    1.050000000000, 0.000000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    471B49,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    6.450000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  1 {m}
+    6.450000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    4.150000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    4.150000000000, 0.000000000000, 0.050000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    E97B31,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    4.150000000000, -0.200000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    4.150000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    4.150000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    4.150000000000, 0.000000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    87BA48,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    6.450000000000, 0.000000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    6.450000000000, -0.200000000000, 2.200000000000,
+                                        !- X,Y,Z  2 {m}
+    4.150000000000, -0.200000000000, 2.200000000000,
+                                        !- X,Y,Z  3 {m}
+    4.150000000000, 0.000000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    26C7C7,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    6.450000000000, 0.000000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    6.450000000000, 0.000000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    6.450000000000, -0.200000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    6.450000000000, -0.200000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    206BB5,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.500000000000, 0.000000000000, 2.650000000000,
+                                        !- X,Y,Z  1 {m}
+    7.500000000000, -1.240000000000, 2.650000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, -1.240000000000, 2.650000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 0.000000000000, 2.650000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    7123C0,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    8.100000000000, 0.000000000000, 5.200000000000,
+                                        !- X,Y,Z  1 {m}
+    8.100000000000, -0.875000000000, 4.715500000000,
+                                        !- X,Y,Z  2 {m}
+    -0.600000000000, -0.875000000000, 4.715500000000,
+                                        !- X,Y,Z  3 {m}
+    -0.600000000000, 0.000000000000, 5.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    C5D593,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 3.250000000000, 7.000000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 0.000000000000, 5.200000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.600000000000, 0.000000000000, 5.200000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.600000000000, 3.250000000000, 7.000000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    7A2E83,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    8.100000000000, 3.250000000000, 7.000000000000,
+                                        !- X,Y,Z  1 {m}
+    8.100000000000, 0.000000000000, 5.200000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 0.000000000000, 5.200000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.250000000000, 7.000000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    867B5A,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.500000000000, 3.250000000000, 7.000000000000,
+                                        !- X,Y,Z  1 {m}
+    7.500000000000, 6.500000000000, 5.200000000000,
+                                        !- X,Y,Z  2 {m}
+    8.100000000000, 6.500000000000, 5.200000000000,
+                                        !- X,Y,Z  3 {m}
+    8.100000000000, 3.250000000000, 7.000000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    96CDC3,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.600000000000, 6.500000000000, 5.200000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.600000000000, 7.025000000000, 4.910000000000,
+                                        !- X,Y,Z  2 {m}
+    8.100000000000, 7.025000000000, 4.910000000000,
+                                        !- X,Y,Z  3 {m}
+    8.100000000000, 6.500000000000, 5.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    908CE5,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.600000000000, 3.250000000000, 7.000000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.600000000000, 6.500000000000, 5.200000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 6.500000000000, 5.200000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 3.250000000000, 7.000000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    EE9BE8,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 1.500000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 1.500000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 1.500000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 1.500000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    88C273,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 2.500000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 1.500000000000, 2.200000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 1.500000000000, 2.200000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 2.500000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    1151EC,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 2.500000000000, 2.200000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 2.500000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 2.500000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 2.500000000000, 2.200000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    303F89,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 2.500000000000, 0.050000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 1.500000000000, 0.050000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 1.500000000000, 0.050000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 2.500000000000, 0.050000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    8DE6D5,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 4.350000000000, 1.950000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 3.350000000000, 1.950000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 3.350000000000, 1.950000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 4.350000000000, 1.950000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    2A6A8F,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 3.350000000000, 1.950000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 3.350000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 3.350000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 3.350000000000, 1.950000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    2F8D09,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 4.350000000000, 1.950000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 4.350000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 4.350000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 4.350000000000, 1.950000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    7E86DD,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 4.350000000000, 1.000000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 3.350000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 3.350000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 4.350000000000, 1.000000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    F7997D,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 2.600000000000, 2.040000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 2.600000000000, 0.990000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 2.600000000000, 0.990000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 2.600000000000, 2.040000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    FD3D9A,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 3.400000000000, 0.990000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 2.600000000000, 0.990000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 2.600000000000, 0.990000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.400000000000, 0.990000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    B124A7,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 3.400000000000, 2.040000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 2.600000000000, 2.040000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 2.600000000000, 2.040000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.400000000000, 2.040000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    10764A,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 3.400000000000, 2.040000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 3.400000000000, 0.990000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 3.400000000000, 0.990000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.400000000000, 2.040000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    ECCDCF,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 4.050000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 4.050000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 4.050000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 4.050000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    A30F8A,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 4.050000000000, 3.650000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 3.450000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 3.450000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 4.050000000000, 3.650000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    B33783,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 3.450000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 3.450000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 3.450000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.450000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    CB0F8D,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 4.050000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 3.450000000000, 4.700000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 3.450000000000, 4.700000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 4.050000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    5F20EC,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 5.050000000000, 3.650000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 4.450000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 4.450000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 5.050000000000, 3.650000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    CFEA6D,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 5.050000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 4.450000000000, 4.700000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 4.450000000000, 4.700000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 5.050000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    828210,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 4.450000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 4.450000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 4.450000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 4.450000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    3A5792,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 5.050000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 5.050000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 5.050000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 5.050000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    CB4593,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    5.100000000000, 6.500000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    5.100000000000, 6.500000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    5.100000000000, 6.700000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    5.100000000000, 6.700000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    53E355,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    5.100000000000, 6.700000000000, 3.650000000000,
+                                        !- X,Y,Z  1 {m}
+    5.100000000000, 6.500000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    4.500000000000, 6.500000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    4.500000000000, 6.700000000000, 3.650000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    7AE9C2,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    4.500000000000, 6.500000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    4.500000000000, 6.500000000000, 3.650000000000,
+                                        !- X,Y,Z  2 {m}
+    4.500000000000, 6.700000000000, 3.650000000000,
+                                        !- X,Y,Z  3 {m}
+    4.500000000000, 6.700000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    5FDFCE,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    5.100000000000, 6.700000000000, 4.700000000000,
+                                        !- X,Y,Z  1 {m}
+    5.100000000000, 6.500000000000, 4.700000000000,
+                                        !- X,Y,Z  2 {m}
+    4.500000000000, 6.500000000000, 4.700000000000,
+                                        !- X,Y,Z  3 {m}
+    4.500000000000, 6.700000000000, 4.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    D32739,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    2.400000000000, 6.500000000000, 2.050000000000,
+                                        !- X,Y,Z  1 {m}
+    2.400000000000, 6.500000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    2.400000000000, 6.700000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    2.400000000000, 6.700000000000, 2.050000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    757531,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    1.600000000000, 6.700000000000, 1.000000000000,
+                                        !- X,Y,Z  1 {m}
+    1.600000000000, 6.500000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    2.400000000000, 6.500000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    2.400000000000, 6.700000000000, 1.000000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    48E842,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    1.600000000000, 6.500000000000, 2.050000000000,
+                                        !- X,Y,Z  1 {m}
+    1.600000000000, 6.500000000000, 1.000000000000,
+                                        !- X,Y,Z  2 {m}
+    1.600000000000, 6.700000000000, 1.000000000000,
+                                        !- X,Y,Z  3 {m}
+    1.600000000000, 6.700000000000, 2.050000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    143B35,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    1.600000000000, 6.700000000000, 2.050000000000,
+                                        !- X,Y,Z  1 {m}
+    1.600000000000, 6.500000000000, 2.050000000000,
+                                        !- X,Y,Z  2 {m}
+    2.400000000000, 6.500000000000, 2.050000000000,
+                                        !- X,Y,Z  3 {m}
+    2.400000000000, 6.700000000000, 2.050000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    1C7783,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    6.200000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    6.200000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    6.200000000000, 0.000000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    6.200000000000, 0.000000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    E998D8,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    6.200000000000, 0.000000000000, 2.700000000000,
+                                        !- X,Y,Z  1 {m}
+    6.200000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    4.800000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    4.800000000000, 0.000000000000, 2.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    62294F,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    4.800000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    4.800000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    4.800000000000, 0.000000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    4.800000000000, 0.000000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    9CEB89,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    6.200000000000, 0.000000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    6.200000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  2 {m}
+    4.800000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  3 {m}
+    4.800000000000, 0.000000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    EF1A98,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    3.600000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    3.600000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    3.600000000000, 0.000000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    3.600000000000, 0.000000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    7D91D3,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    3.600000000000, 0.000000000000, 2.700000000000,
+                                        !- X,Y,Z  1 {m}
+    3.600000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    2.200000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    2.200000000000, 0.000000000000, 2.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    89948B,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    3.600000000000, 0.000000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    3.600000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  2 {m}
+    2.200000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  3 {m}
+    2.200000000000, 0.000000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    697A5E,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    2.200000000000, -0.200000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    2.200000000000, -0.200000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    2.200000000000, 0.000000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    2.200000000000, 0.000000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    B86563,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 3.300000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 3.300000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 3.300000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 3.300000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    3C656C,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 4.300000000000, 2.700000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 3.300000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 3.300000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 4.300000000000, 2.700000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    FCFF6B,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 4.300000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 3.300000000000, 4.850000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 3.300000000000, 4.850000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 4.300000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    342680,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 4.300000000000, 4.850000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 4.300000000000, 2.700000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 4.300000000000, 2.700000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 4.300000000000, 4.850000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    6D61D4,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 2.850000000000, 6.450000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 2.850000000000, 6.450000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    C9D58C,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 3.650000000000, 6.450000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 3.650000000000, 5.400000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 3.650000000000, 5.400000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.650000000000, 6.450000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    5D4A8F,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.700000000000, 3.650000000000, 5.400000000000,
+                                        !- X,Y,Z  1 {m}
+    7.700000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  2 {m}
+    7.500000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  3 {m}
+    7.500000000000, 3.650000000000, 5.400000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    628949,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    7.500000000000, 3.650000000000, 6.450000000000,
+                                        !- X,Y,Z  1 {m}
+    7.500000000000, 2.850000000000, 6.450000000000,
+                                        !- X,Y,Z  2 {m}
+    7.700000000000, 2.850000000000, 6.450000000000,
+                                        !- X,Y,Z  3 {m}
+    7.700000000000, 3.650000000000, 6.450000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    EF0E05,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 3.650000000000, 5.400000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 3.650000000000, 5.400000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    40EB0D,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 2.850000000000, 6.450000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 2.850000000000, 5.400000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 2.850000000000, 6.450000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    8C7EDE,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    0.000000000000, 3.650000000000, 6.450000000000,
+                                        !- X,Y,Z  1 {m}
+    0.000000000000, 2.850000000000, 6.450000000000,
+                                        !- X,Y,Z  2 {m}
+    -0.200000000000, 2.850000000000, 6.450000000000,
+                                        !- X,Y,Z  3 {m}
+    -0.200000000000, 3.650000000000, 6.450000000000;
+                                        !- X,Y,Z  4 {m}
+
+Shading:Building:Detailed,
+    5F4538,                  !- Name
+    ,                        !- Transmittance Schedule Name
+    4,                       !- Number of Vertices
+    -0.200000000000, 3.650000000000, 6.450000000000,
+                                        !- X,Y,Z  1 {m}
+    -0.200000000000, 3.650000000000, 5.400000000000,
+                                        !- X,Y,Z  2 {m}
+    0.000000000000, 3.650000000000, 5.400000000000,
+                                        !- X,Y,Z  3 {m}
+    0.000000000000, 3.650000000000, 6.450000000000;
+                                        !- X,Y,Z  4 {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONECONTROL:THERMOSTAT ===========
+
+ZoneControl:Thermostat,
+    RDC Thermal Zone Thermostat,  !- Name
+    RDC Thermal Zone,        !- Zone or ZoneList Name
+    HVACTemplate-Always 4,   !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Consigne_RDC Dual SP Control;  !- Control 1 Name
+
+ZoneControl:Thermostat,
+    ZCh1 Thermostat,         !- Name
+    ZCh1,                    !- Zone or ZoneList Name
+    HVACTemplate-Always 4,   !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Consigne_ch1 Dual SP Control;  !- Control 1 Name
+
+ZoneControl:Thermostat,
+    ZCh2 Thermostat,         !- Name
+    ZCh2,                    !- Zone or ZoneList Name
+    HVACTemplate-Always 4,   !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Consigne_ch2 Dual SP Control;  !- Control 1 Name
+
+ZoneControl:Thermostat,
+    ZCh3 Thermostat,         !- Name
+    ZCh3,                    !- Zone or ZoneList Name
+    HVACTemplate-Always 4,   !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Consigne_ch3 Dual SP Control;  !- Control 1 Name
+
+ZoneControl:Thermostat,
+    ZSdb Thermostat,         !- Name
+    ZSdb,                    !- Zone or ZoneList Name
+    HVACTemplate-Always 4,   !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Consigne_sdb Dual SP Control;  !- Control 1 Name
+
+ZoneControl:Thermostat,
+    COMBLE Thermal Zone Thermostat,  !- Name
+    COMBLE Thermal Zone,     !- Zone or ZoneList Name
+    HVACTemplate-Always 4,   !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Consigne_co-cooling Dual SP Control;  !- Control 1 Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: THERMOSTATSETPOINT:DUALSETPOINT ===========
+
+ThermostatSetpoint:DualSetpoint,
+    Consigne_ch2 Dual SP Control,  !- Name
+    SCHEDULE_CO-HEATING,     !- Heating Setpoint Temperature Schedule Name
+    SCHEDULE_CO-COOLING;     !- Cooling Setpoint Temperature Schedule Name
+
+ThermostatSetpoint:DualSetpoint,
+    Consigne_ch3 Dual SP Control,  !- Name
+    SCHEDULE_CO-HEATING,     !- Heating Setpoint Temperature Schedule Name
+    SCHEDULE_CO-COOLING;     !- Cooling Setpoint Temperature Schedule Name
+
+ThermostatSetpoint:DualSetpoint,
+    Consigne_RDC Dual SP Control,  !- Name
+    SCHEDULE_CO-HEATING,     !- Heating Setpoint Temperature Schedule Name
+    SCHEDULE_CO-COOLING;     !- Cooling Setpoint Temperature Schedule Name
+
+ThermostatSetpoint:DualSetpoint,
+    Consigne_ch1 Dual SP Control,  !- Name
+    SCHEDULE_CO-HEATING,     !- Heating Setpoint Temperature Schedule Name
+    SCHEDULE_CO-COOLING;     !- Cooling Setpoint Temperature Schedule Name
+
+ThermostatSetpoint:DualSetpoint,
+    Consigne_sdb Dual SP Control,  !- Name
+    SCHEDULE_CO-HEATING,     !- Heating Setpoint Temperature Schedule Name
+    SCHEDULE_CO-COOLING;     !- Cooling Setpoint Temperature Schedule Name
+
+ThermostatSetpoint:DualSetpoint,
+    Consigne_co-cooling Dual SP Control,  !- Name
+    SCHEDULE_CO-HEATING,     !- Heating Setpoint Temperature Schedule Name
+    SCHEDULE_CO-COOLING;     !- Cooling Setpoint Temperature Schedule Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONEHVAC:IDEALLOADSAIRSYSTEM ===========
+
+ZoneHVAC:IdealLoadsAirSystem,
+    RDC Thermal Zone Ideal Loads Air System,  !- Name
+    ,                        !- Availability Schedule Name
+    RDC Thermal Zone Ideal Loads Supply Inlet,  !- Zone Supply Air Node Name
+    ,                        !- Zone Exhaust Air Node Name
+    ,                        !- System Inlet Air Node Name
+    50,                      !- Maximum Heating Supply Air Temperature {C}
+    13,                      !- Minimum Cooling Supply Air Temperature {C}
+    0.0156,                  !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0077,                  !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+    NoLimit,                 !- Heating Limit
+    ,                        !- Maximum Heating Air Flow Rate {m3/s}
+    ,                        !- Maximum Sensible Heating Capacity {W}
+    NoLimit,                 !- Cooling Limit
+    ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+    ,                        !- Maximum Total Cooling Capacity {W}
+    ,                        !- Heating Availability Schedule Name
+    ,                        !- Cooling Availability Schedule Name
+    ConstantSensibleHeatRatio,  !- Dehumidification Control Type
+    0.7,                     !- Cooling Sensible Heat Ratio {dimensionless}
+    None,                    !- Humidification Control Type
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Outdoor Air Inlet Node Name
+    None,                    !- Demand Controlled Ventilation Type
+    NoEconomizer,            !- Outdoor Air Economizer Type
+    None,                    !- Heat Recovery Type
+    0.7,                     !- Sensible Heat Recovery Effectiveness {dimensionless}
+    0.65;                    !- Latent Heat Recovery Effectiveness {dimensionless}
+
+ZoneHVAC:IdealLoadsAirSystem,
+    ZCh1 Ideal Loads Air System,  !- Name
+    ,                        !- Availability Schedule Name
+    ZCh1 Ideal Loads Supply Inlet,  !- Zone Supply Air Node Name
+    ,                        !- Zone Exhaust Air Node Name
+    ,                        !- System Inlet Air Node Name
+    50,                      !- Maximum Heating Supply Air Temperature {C}
+    13,                      !- Minimum Cooling Supply Air Temperature {C}
+    0.0156,                  !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0077,                  !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+    NoLimit,                 !- Heating Limit
+    ,                        !- Maximum Heating Air Flow Rate {m3/s}
+    ,                        !- Maximum Sensible Heating Capacity {W}
+    NoLimit,                 !- Cooling Limit
+    ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+    ,                        !- Maximum Total Cooling Capacity {W}
+    ,                        !- Heating Availability Schedule Name
+    ,                        !- Cooling Availability Schedule Name
+    ConstantSensibleHeatRatio,  !- Dehumidification Control Type
+    0.7,                     !- Cooling Sensible Heat Ratio {dimensionless}
+    None,                    !- Humidification Control Type
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Outdoor Air Inlet Node Name
+    None,                    !- Demand Controlled Ventilation Type
+    NoEconomizer,            !- Outdoor Air Economizer Type
+    None,                    !- Heat Recovery Type
+    0.7,                     !- Sensible Heat Recovery Effectiveness {dimensionless}
+    0.65;                    !- Latent Heat Recovery Effectiveness {dimensionless}
+
+ZoneHVAC:IdealLoadsAirSystem,
+    ZCh2 Ideal Loads Air System,  !- Name
+    ,                        !- Availability Schedule Name
+    ZCh2 Ideal Loads Supply Inlet,  !- Zone Supply Air Node Name
+    ,                        !- Zone Exhaust Air Node Name
+    ,                        !- System Inlet Air Node Name
+    50,                      !- Maximum Heating Supply Air Temperature {C}
+    13,                      !- Minimum Cooling Supply Air Temperature {C}
+    0.0156,                  !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0077,                  !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+    NoLimit,                 !- Heating Limit
+    ,                        !- Maximum Heating Air Flow Rate {m3/s}
+    ,                        !- Maximum Sensible Heating Capacity {W}
+    NoLimit,                 !- Cooling Limit
+    ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+    ,                        !- Maximum Total Cooling Capacity {W}
+    ,                        !- Heating Availability Schedule Name
+    ,                        !- Cooling Availability Schedule Name
+    ConstantSensibleHeatRatio,  !- Dehumidification Control Type
+    0.7,                     !- Cooling Sensible Heat Ratio {dimensionless}
+    None,                    !- Humidification Control Type
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Outdoor Air Inlet Node Name
+    None,                    !- Demand Controlled Ventilation Type
+    NoEconomizer,            !- Outdoor Air Economizer Type
+    None,                    !- Heat Recovery Type
+    0.7,                     !- Sensible Heat Recovery Effectiveness {dimensionless}
+    0.65;                    !- Latent Heat Recovery Effectiveness {dimensionless}
+
+ZoneHVAC:IdealLoadsAirSystem,
+    ZCh3 Ideal Loads Air System,  !- Name
+    ,                        !- Availability Schedule Name
+    ZCh3 Ideal Loads Supply Inlet,  !- Zone Supply Air Node Name
+    ,                        !- Zone Exhaust Air Node Name
+    ,                        !- System Inlet Air Node Name
+    50,                      !- Maximum Heating Supply Air Temperature {C}
+    13,                      !- Minimum Cooling Supply Air Temperature {C}
+    0.0156,                  !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0077,                  !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+    NoLimit,                 !- Heating Limit
+    ,                        !- Maximum Heating Air Flow Rate {m3/s}
+    ,                        !- Maximum Sensible Heating Capacity {W}
+    NoLimit,                 !- Cooling Limit
+    ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+    ,                        !- Maximum Total Cooling Capacity {W}
+    ,                        !- Heating Availability Schedule Name
+    ,                        !- Cooling Availability Schedule Name
+    ConstantSensibleHeatRatio,  !- Dehumidification Control Type
+    0.7,                     !- Cooling Sensible Heat Ratio {dimensionless}
+    None,                    !- Humidification Control Type
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Outdoor Air Inlet Node Name
+    None,                    !- Demand Controlled Ventilation Type
+    NoEconomizer,            !- Outdoor Air Economizer Type
+    None,                    !- Heat Recovery Type
+    0.7,                     !- Sensible Heat Recovery Effectiveness {dimensionless}
+    0.65;                    !- Latent Heat Recovery Effectiveness {dimensionless}
+
+ZoneHVAC:IdealLoadsAirSystem,
+    ZSdb Ideal Loads Air System,  !- Name
+    ,                        !- Availability Schedule Name
+    ZSdb Ideal Loads Supply Inlet,  !- Zone Supply Air Node Name
+    ,                        !- Zone Exhaust Air Node Name
+    ,                        !- System Inlet Air Node Name
+    50,                      !- Maximum Heating Supply Air Temperature {C}
+    13,                      !- Minimum Cooling Supply Air Temperature {C}
+    0.0156,                  !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0077,                  !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+    NoLimit,                 !- Heating Limit
+    ,                        !- Maximum Heating Air Flow Rate {m3/s}
+    ,                        !- Maximum Sensible Heating Capacity {W}
+    NoLimit,                 !- Cooling Limit
+    ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+    ,                        !- Maximum Total Cooling Capacity {W}
+    ,                        !- Heating Availability Schedule Name
+    ,                        !- Cooling Availability Schedule Name
+    ConstantSensibleHeatRatio,  !- Dehumidification Control Type
+    0.7,                     !- Cooling Sensible Heat Ratio {dimensionless}
+    None,                    !- Humidification Control Type
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Outdoor Air Inlet Node Name
+    None,                    !- Demand Controlled Ventilation Type
+    NoEconomizer,            !- Outdoor Air Economizer Type
+    None,                    !- Heat Recovery Type
+    0.7,                     !- Sensible Heat Recovery Effectiveness {dimensionless}
+    0.65;                    !- Latent Heat Recovery Effectiveness {dimensionless}
+
+ZoneHVAC:IdealLoadsAirSystem,
+    COMBLE ThermalZone Ideal Loads Air System,  !- Name
+    ,                        !- Availability Schedule Name
+    COMBLE ThermalZone Ideal Loads Supply Inlet,  !- Zone Supply Air Node Name
+    ,                        !- Zone Exhaust Air Node Name
+    ,                        !- System Inlet Air Node Name
+    50,                      !- Maximum Heating Supply Air Temperature {C}
+    13,                      !- Minimum Cooling Supply Air Temperature {C}
+    0.0156,                  !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0077,                  !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+    NoLimit,                 !- Heating Limit
+    ,                        !- Maximum Heating Air Flow Rate {m3/s}
+    ,                        !- Maximum Sensible Heating Capacity {W}
+    NoLimit,                 !- Cooling Limit
+    ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+    ,                        !- Maximum Total Cooling Capacity {W}
+    ,                        !- Heating Availability Schedule Name
+    ,                        !- Cooling Availability Schedule Name
+    ConstantSensibleHeatRatio,  !- Dehumidification Control Type
+    0.7,                     !- Cooling Sensible Heat Ratio {dimensionless}
+    None,                    !- Humidification Control Type
+    ,                        !- Design Specification Outdoor Air Object Name
+    ,                        !- Outdoor Air Inlet Node Name
+    None,                    !- Demand Controlled Ventilation Type
+    NoEconomizer,            !- Outdoor Air Economizer Type
+    None,                    !- Heat Recovery Type
+    0.7,                     !- Sensible Heat Recovery Effectiveness {dimensionless}
+    0.65;                    !- Latent Heat Recovery Effectiveness {dimensionless}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONEHVAC:EQUIPMENTLIST ===========
+
+ZoneHVAC:EquipmentList,
+    RDC Thermal Zone Equipment,  !- Name
+    SequentialLoad,          !- Load Distribution Scheme
+    ZoneHVAC:IdealLoadsAirSystem,  !- Zone Equipment 1 Object Type
+    RDC Thermal Zone Ideal Loads Air System,  !- Zone Equipment 1 Name
+    1,                       !- Zone Equipment 1 Cooling Sequence
+    1,                       !- Zone Equipment 1 Heating or No-Load Sequence
+    ,                        !- Zone Equipment 1 Sequential Cooling Fraction Schedule Name
+    ;                        !- Zone Equipment 1 Sequential Heating Fraction Schedule Name
+
+ZoneHVAC:EquipmentList,
+    ZCh1 Equipment,          !- Name
+    SequentialLoad,          !- Load Distribution Scheme
+    ZoneHVAC:IdealLoadsAirSystem,  !- Zone Equipment 1 Object Type
+    ZCh1 Ideal Loads Air System,  !- Zone Equipment 1 Name
+    1,                       !- Zone Equipment 1 Cooling Sequence
+    1,                       !- Zone Equipment 1 Heating or No-Load Sequence
+    ,                        !- Zone Equipment 1 Sequential Cooling Fraction Schedule Name
+    ;                        !- Zone Equipment 1 Sequential Heating Fraction Schedule Name
+
+ZoneHVAC:EquipmentList,
+    ZCh2 Equipment,          !- Name
+    SequentialLoad,          !- Load Distribution Scheme
+    ZoneHVAC:IdealLoadsAirSystem,  !- Zone Equipment 1 Object Type
+    ZCh2 Ideal Loads Air System,  !- Zone Equipment 1 Name
+    1,                       !- Zone Equipment 1 Cooling Sequence
+    1,                       !- Zone Equipment 1 Heating or No-Load Sequence
+    ,                        !- Zone Equipment 1 Sequential Cooling Fraction Schedule Name
+    ;                        !- Zone Equipment 1 Sequential Heating Fraction Schedule Name
+
+ZoneHVAC:EquipmentList,
+    ZCh3 Equipment,          !- Name
+    SequentialLoad,          !- Load Distribution Scheme
+    ZoneHVAC:IdealLoadsAirSystem,  !- Zone Equipment 1 Object Type
+    ZCh3 Ideal Loads Air System,  !- Zone Equipment 1 Name
+    1,                       !- Zone Equipment 1 Cooling Sequence
+    1,                       !- Zone Equipment 1 Heating or No-Load Sequence
+    ,                        !- Zone Equipment 1 Sequential Cooling Fraction Schedule Name
+    ;                        !- Zone Equipment 1 Sequential Heating Fraction Schedule Name
+
+ZoneHVAC:EquipmentList,
+    ZSdb Equipment,          !- Name
+    SequentialLoad,          !- Load Distribution Scheme
+    ZoneHVAC:IdealLoadsAirSystem,  !- Zone Equipment 1 Object Type
+    ZSdb Ideal Loads Air System,  !- Zone Equipment 1 Name
+    1,                       !- Zone Equipment 1 Cooling Sequence
+    1,                       !- Zone Equipment 1 Heating or No-Load Sequence
+    ,                        !- Zone Equipment 1 Sequential Cooling Fraction Schedule Name
+    ;                        !- Zone Equipment 1 Sequential Heating Fraction Schedule Name
+
+ZoneHVAC:EquipmentList,
+    COMBLE ThermalZone Equipment,  !- Name
+    SequentialLoad,          !- Load Distribution Scheme
+    ZoneHVAC:IdealLoadsAirSystem,  !- Zone Equipment 1 Object Type
+    COMBLE ThermalZone Ideal Loads Air System,  !- Zone Equipment 1 Name
+    1,                       !- Zone Equipment 1 Cooling Sequence
+    1,                       !- Zone Equipment 1 Heating or No-Load Sequence
+    ,                        !- Zone Equipment 1 Sequential Cooling Fraction Schedule Name
+    ;                        !- Zone Equipment 1 Sequential Heating Fraction Schedule Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONEHVAC:EQUIPMENTCONNECTIONS ===========
+
+ZoneHVAC:EquipmentConnections,
+    RDC Thermal Zone,        !- Zone Name
+    RDC Thermal Zone Equipment,  !- Zone Conditioning Equipment List Name
+    RDC Thermal Zone Ideal Loads Supply Inlet,  !- Zone Air Inlet Node or NodeList Name
+    ,                        !- Zone Air Exhaust Node or NodeList Name
+    RDC Thermal Zone Zone Air Node,  !- Zone Air Node Name
+    RDC Thermal Zone Return Outlet;  !- Zone Return Air Node or NodeList Name
+
+ZoneHVAC:EquipmentConnections,
+    ZCh1,                    !- Zone Name
+    ZCh1 Equipment,          !- Zone Conditioning Equipment List Name
+    ZCh1 Ideal Loads Supply Inlet,  !- Zone Air Inlet Node or NodeList Name
+    ,                        !- Zone Air Exhaust Node or NodeList Name
+    ZCh1 Zone Air Node,      !- Zone Air Node Name
+    ZCh1 Return Outlet;      !- Zone Return Air Node or NodeList Name
+
+ZoneHVAC:EquipmentConnections,
+    ZCh2,                    !- Zone Name
+    ZCh2 Equipment,          !- Zone Conditioning Equipment List Name
+    ZCh2 Ideal Loads Supply Inlet,  !- Zone Air Inlet Node or NodeList Name
+    ,                        !- Zone Air Exhaust Node or NodeList Name
+    ZCh2 Zone Air Node,      !- Zone Air Node Name
+    ZCh2 Return Outlet;      !- Zone Return Air Node or NodeList Name
+
+ZoneHVAC:EquipmentConnections,
+    ZCh3,                    !- Zone Name
+    ZCh3 Equipment,          !- Zone Conditioning Equipment List Name
+    ZCh3 Ideal Loads Supply Inlet,  !- Zone Air Inlet Node or NodeList Name
+    ,                        !- Zone Air Exhaust Node or NodeList Name
+    ZCh3 Zone Air Node,      !- Zone Air Node Name
+    ZCh3 Return Outlet;      !- Zone Return Air Node or NodeList Name
+
+ZoneHVAC:EquipmentConnections,
+    ZSdb,                    !- Zone Name
+    ZSdb Equipment,          !- Zone Conditioning Equipment List Name
+    ZSdb Ideal Loads Supply Inlet,  !- Zone Air Inlet Node or NodeList Name
+    ,                        !- Zone Air Exhaust Node or NodeList Name
+    ZSdb Zone Air Node,      !- Zone Air Node Name
+    ZSdb Return Outlet;      !- Zone Return Air Node or NodeList Name
+
+ZoneHVAC:EquipmentConnections,
+    COMBLE Thermal Zone,     !- Zone Name
+    COMBLE ThermalZone Equipment,  !- Zone Conditioning Equipment List Name
+    COMBLE ThermalZone Ideal Loads Supply Inlet,  !- Zone Air Inlet Node or NodeList Name
+    ,                        !- Zone Air Exhaust Node or NodeList Name
+    COMBLE ThermalZone Zone Air Node,  !- Zone Air Node Name
+    COMBLE ThermalZone Return Outlet;  !- Zone Return Air Node or NodeList Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLEDICTIONARY ===========
+
+!                                         !- X,Y,Z  4 {m}
+!
+!
+!
+! HVACTemplate:Thermostat,
+!     Consigne_ch2,            !- Name
+!     Chauffage_ch2,           !- Heating Setpoint Schedule Name
+!     ,                        !- Constant Heating Setpoint {C}
+!     ,                        !- Cooling Setpoint Schedule Name
+!     50;                      !- Constant Cooling Setpoint {C}
+!
+! HVACTemplate:Thermostat,
+!     Consigne_ch3,            !- Name
+!     Chauffage_ch3,           !- Heating Setpoint Schedule Name
+!     ,                        !- Constant Heating Setpoint {C}
+!     ,                        !- Cooling Setpoint Schedule Name
+!     50;                      !- Constant Cooling Setpoint {C}
+!
+! HVACTemplate:Thermostat,
+!     Consigne_RDC,            !- Name
+!     ,                        !- Heating Setpoint Schedule Name
+!     19,                      !- Constant Heating Setpoint {C}
+!     ,                        !- Cooling Setpoint Schedule Name
+!     50;                      !- Constant Cooling Setpoint {C}
+!
+! HVACTemplate:Thermostat,
+!     Consigne_ch1,            !- Name
+!     Chauffage_ch1,           !- Heating Setpoint Schedule Name
+!     ,                        !- Constant Heating Setpoint {C}
+!     ,                        !- Cooling Setpoint Schedule Name
+!     50;                      !- Constant Cooling Setpoint {C}
+!
+! HVACTemplate:Thermostat,
+!     Consigne_sdb,            !- Name
+!     ,                        !- Heating Setpoint Schedule Name
+!     19,                      !- Constant Heating Setpoint {C}
+!     ,                        !- Cooling Setpoint Schedule Name
+!     50;                      !- Constant Cooling Setpoint {C}
+!
+! HVACTemplate:Thermostat,
+!     Consigne_co-cooling,     !- Name
+!     ,                        !- Heating Setpoint Schedule Name
+!     ,                        !- Constant Heating Setpoint {C}
+!     SCHEDULE_CO-COOLING,     !- Cooling Setpoint Schedule Name
+!     20;                      !- Constant Cooling Setpoint {C}
+!
+!
+!
+! HVACTemplate:Zone:IdealLoadsAirSystem,
+!     RDC Thermal Zone,        !- Zone Name
+!     Consigne_RDC,            !- Template Thermostat Name
+!     ,                        !- System Availability Schedule Name
+!     ,                        !- Maximum Heating Supply Air Temperature {C}
+!     ,                        !- Minimum Cooling Supply Air Temperature {C}
+!     ,                        !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Heating Limit
+!     ,                        !- Maximum Heating Air Flow Rate {m3/s}
+!     ,                        !- Maximum Sensible Heating Capacity {W}
+!     ,                        !- Cooling Limit
+!     ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+!     ,                        !- Maximum Total Cooling Capacity {W}
+!     ,                        !- Heating Availability Schedule Name
+!     ,                        !- Cooling Availability Schedule Name
+!     ,                        !- Dehumidification Control Type
+!     ,                        !- Cooling Sensible Heat Ratio {dimensionless}
+!     ,                        !- Dehumidification Setpoint {percent}
+!     ,                        !- Humidification Control Type
+!     ,                        !- Humidification Setpoint {percent}
+!     ,                        !- Outdoor Air Method
+!     ,                        !- Outdoor Air Flow Rate per Person {m3/s}
+!     ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+!     ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
+!     ,                        !- Design Specification Outdoor Air Object Name
+!     ;                        !- Demand Controlled Ventilation Type
+!
+! HVACTemplate:Zone:IdealLoadsAirSystem,
+!     ZCh1,                    !- Zone Name
+!     Consigne_ch1,            !- Template Thermostat Name
+!     ,                        !- System Availability Schedule Name
+!     ,                        !- Maximum Heating Supply Air Temperature {C}
+!     ,                        !- Minimum Cooling Supply Air Temperature {C}
+!     ,                        !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Heating Limit
+!     ,                        !- Maximum Heating Air Flow Rate {m3/s}
+!     ,                        !- Maximum Sensible Heating Capacity {W}
+!     ,                        !- Cooling Limit
+!     ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+!     ,                        !- Maximum Total Cooling Capacity {W}
+!     ,                        !- Heating Availability Schedule Name
+!     ,                        !- Cooling Availability Schedule Name
+!     ,                        !- Dehumidification Control Type
+!     ,                        !- Cooling Sensible Heat Ratio {dimensionless}
+!     ,                        !- Dehumidification Setpoint {percent}
+!     ,                        !- Humidification Control Type
+!     ,                        !- Humidification Setpoint {percent}
+!     ,                        !- Outdoor Air Method
+!     ,                        !- Outdoor Air Flow Rate per Person {m3/s}
+!     ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+!     ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
+!     ,                        !- Design Specification Outdoor Air Object Name
+!     ;                        !- Demand Controlled Ventilation Type
+!
+! HVACTemplate:Zone:IdealLoadsAirSystem,
+!     ZCh2,                    !- Zone Name
+!     Consigne_ch2,            !- Template Thermostat Name
+!     ,                        !- System Availability Schedule Name
+!     ,                        !- Maximum Heating Supply Air Temperature {C}
+!     ,                        !- Minimum Cooling Supply Air Temperature {C}
+!     ,                        !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Heating Limit
+!     ,                        !- Maximum Heating Air Flow Rate {m3/s}
+!     ,                        !- Maximum Sensible Heating Capacity {W}
+!     ,                        !- Cooling Limit
+!     ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+!     ,                        !- Maximum Total Cooling Capacity {W}
+!     ,                        !- Heating Availability Schedule Name
+!     ,                        !- Cooling Availability Schedule Name
+!     ,                        !- Dehumidification Control Type
+!     ,                        !- Cooling Sensible Heat Ratio {dimensionless}
+!     ,                        !- Dehumidification Setpoint {percent}
+!     ,                        !- Humidification Control Type
+!     ,                        !- Humidification Setpoint {percent}
+!     ,                        !- Outdoor Air Method
+!     ,                        !- Outdoor Air Flow Rate per Person {m3/s}
+!     ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+!     ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
+!     ,                        !- Design Specification Outdoor Air Object Name
+!     ;                        !- Demand Controlled Ventilation Type
+!
+! HVACTemplate:Zone:IdealLoadsAirSystem,
+!     ZCh3,                    !- Zone Name
+!     Consigne_ch3,            !- Template Thermostat Name
+!     ,                        !- System Availability Schedule Name
+!     ,                        !- Maximum Heating Supply Air Temperature {C}
+!     ,                        !- Minimum Cooling Supply Air Temperature {C}
+!     ,                        !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Heating Limit
+!     ,                        !- Maximum Heating Air Flow Rate {m3/s}
+!     ,                        !- Maximum Sensible Heating Capacity {W}
+!     ,                        !- Cooling Limit
+!     ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+!     ,                        !- Maximum Total Cooling Capacity {W}
+!     ,                        !- Heating Availability Schedule Name
+!     ,                        !- Cooling Availability Schedule Name
+!     ,                        !- Dehumidification Control Type
+!     ,                        !- Cooling Sensible Heat Ratio {dimensionless}
+!     ,                        !- Dehumidification Setpoint {percent}
+!     ,                        !- Humidification Control Type
+!     ,                        !- Humidification Setpoint {percent}
+!     ,                        !- Outdoor Air Method
+!     ,                        !- Outdoor Air Flow Rate per Person {m3/s}
+!     ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+!     ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
+!     ,                        !- Design Specification Outdoor Air Object Name
+!     ;                        !- Demand Controlled Ventilation Type
+!
+! HVACTemplate:Zone:IdealLoadsAirSystem,
+!     ZSdb,                    !- Zone Name
+!     Consigne_sdb,            !- Template Thermostat Name
+!     ,                        !- System Availability Schedule Name
+!     ,                        !- Maximum Heating Supply Air Temperature {C}
+!     ,                        !- Minimum Cooling Supply Air Temperature {C}
+!     ,                        !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Heating Limit
+!     ,                        !- Maximum Heating Air Flow Rate {m3/s}
+!     ,                        !- Maximum Sensible Heating Capacity {W}
+!     ,                        !- Cooling Limit
+!     ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+!     ,                        !- Maximum Total Cooling Capacity {W}
+!     ,                        !- Heating Availability Schedule Name
+!     ,                        !- Cooling Availability Schedule Name
+!     ,                        !- Dehumidification Control Type
+!     ,                        !- Cooling Sensible Heat Ratio {dimensionless}
+!     ,                        !- Dehumidification Setpoint {percent}
+!     ,                        !- Humidification Control Type
+!     ,                        !- Humidification Setpoint {percent}
+!     ,                        !- Outdoor Air Method
+!     ,                        !- Outdoor Air Flow Rate per Person {m3/s}
+!     ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+!     ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
+!     ,                        !- Design Specification Outdoor Air Object Name
+!     ;                        !- Demand Controlled Ventilation Type
+Output:VariableDictionary,regular;
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:SURFACES:LIST ===========
+
+Output:Surfaces:List,Details;
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:SURFACES:DRAWING ===========
+
+Output:Surfaces:Drawing,DXF,Triangulate3DFace;
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:CONSTRUCTIONS ===========
+
+Output:Constructions,Constructions;
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:TABLE:SUMMARYREPORTS ===========
+
+
+Output:Table:SummaryReports,
+    AllSummary,              !- Report 1 Name
+    SpaceGainsMonthly,       !- Report 2 Name
+    ZoneComponentLoadSummary,!- Report 3 Name
+    ClimaticDataSummary,     !- Report 4 Name
+    HVACSizingSummary,       !- Report 5 Name
+    ZoneCoolingSummaryMonthly,  !- Report 6 Name
+    ZoneHeatingSummaryMonthly;  !- Report 7 Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUTCONTROL:TABLE:STYLE ===========
+
+OutputControl:Table:Style,
+    TabAndHTML,              !- Column Separator
+    JtoKWH;                  !- Unit Conversion
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLE ===========
+
+Output:Variable,*,Zone Mean Air Temperature,Hourly;
+Output:Variable,*,Site Outdoor Air Drybulb Temperature,Hourly;
+Output:Variable,*,Site Diffuse Solar Radiation Rate per Area,Hourly;
+Output:Variable,*,Site Direct Solar Radiation Rate per Area,Hourly;
+Output:Variable,*,Site Horizontal Infrared Radiation Rate per Area,Hourly;
+Output:Variable,*,Site Ground Reflected Solar Radiation Rate per Area,Hourly;
+Output:Variable,*,Site Ground Temperature,Hourly;
+Output:Variable,*,Zone Ideal Loads Zone Total Heating Rate,Hourly;
+Output:Variable,*,Zone Infiltration Air Change Rate,Hourly;
+Output:Variable,*,Zone Ventilation Mass Flow Rate,Hourly;
+Output:Variable,*,Surface Window Transmitted Solar Radiation Rate,Hourly;
+Output:Variable,*,Site Sky Temperature,Hourly;
+Output:Variable,*,Zone Electric Equipment Total Heating Rate,Hourly;
+Output:Variable,*,Zone People Total Heating Rate,Hourly;
+Output:Variable,*,Zone Total Internal Total Heating Rate,Hourly;
+Output:Variable,*,Zone Windows Total Transmitted Solar Radiation Rate,Hourly;
+Output:Variable,*,Surface Outside Face Solar Radiation Heat Gain Rate per Area,Hourly;
+Output:Variable,*,Surface Outside Face Incident Solar Radiation Rate per Area,Hourly;
+Output:Variable,*,Zone Ideal Loads Zone Total Cooling Rate,Hourly;
+Output:Variable,*,Zone Total Internal Cooling Rate,Hourly;
+Output:Variable,*,Zone Ideal Loads Heat Recovery Total Cooling Rate,Hourly;
+Output:Variable,*,Zone Ideal Loads Outdoor Air Total Cooling Rate,Hourly;
+Output:Variable,*,Zone Ideal Loads Supply Air Total Cooling Rate,Hourly;
+Output:Variable,*,Surface Outside Face Temperature,Hourly;
+Output:Variable,*,Surface Inside Face Temperature,Hourly;
+Output:Variable,*,Zone Air Humidity Ratio,Hourly;
+Output:Variable,*,Zone Air Relative Humidity,Hourly;
+Output:Variable,*,Zone Ideal Loads Supply Air Sensible Cooling Rate,Hourly;
+Output:Variable,*,Zone Ideal Loads Supply Air Latent Cooling Rate,Hourly;
+Output:Variable,*,Site Horizontal Infrared Radiation Rate per Area,hourly;
+Output:Variable,*,Surface Outside Face Conduction Heat Transfer Rate,hourly;
+Output:Variable,*,Surface Outside Face Net Thermal Radiation Heat Gain Rate,hourly;
+Output:Variable,*,Surface Outside Face Convection Heat Gain Rate,hourly;
+Output:Variable,*,Surface Outside Face Solar Radiation Heat Gain Rate,hourly;
+Output:Variable,*,Surface Window Transmitted Solar Radiation Rate,hourly;
+Output:Variable,*,Surface Window Net Heat Transfer Rate,hourly;
+Output:Variable,*,Surface Inside Face Net Thermal Radiation Heat Gain Rate,hourly;
+Output:Variable,*,Surface Inside Face Convection Heat Gain Rate,hourly;
+Output:Variable,*,Surface Inside Face Conduction Heat Transfer Rate,hourly;
+Output:Variable,*,Surface Inside Face Solar Radiation Heat Gain Rate,hourly;
+Output:Variable,*,Surface Inside Face Internal Gains Radiation Heat Gain Rate,hourly;
+Output:Variable,*,Surface Outside Face Thermal Radiation to Air Heat Transfer Coefficient,hourly;
+Output:Variable,*,Surface Outside Face Thermal Radiation to Sky Heat Transfer Coefficient,hourly;
+Output:Variable,*,Surface Outside Face Thermal Radiation to Ground Heat Transfer Coefficient,hourly;
+Output:Variable,*,Surface Outside Face Convection Heat Transfer Coefficient,hourly;
+Output:Variable,*,Surface Outside Face Solar Radiation Heat Gain Rate per Area,hourly;
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:DIAGNOSTICS ===========
+
+
+Output:Diagnostics,
+    DisplayAdvancedReportVariables;  !- Key 1
+
